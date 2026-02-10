@@ -40,3 +40,50 @@ data/
 ├── dev.sql     # Development set SQL
 ├── test.nl     # Test set natural language
 └── test.sql    # Test set SQL (for evaluation)
+
+
+## Usage
+
+### Basic Training
+
+Fine-tune a pretrained T5 model using default settings.
+
+Command:
+python train.py --finetune --max_n_epochs 10 --batch_size 16
+
+### Training from Scratch
+
+Train a T5 model from scratch without loading pretrained weights.
+
+Command:
+python train.py --max_n_epochs 20 --learning_rate 1e-4 --batch_size 16
+
+### Training with Experiment Tracking
+
+Enable Weights & Biases logging and specify an experiment name.
+
+Command:
+python train.py --finetune --use_wandb --experiment_name my_experiment  
+--max_n_epochs 10 --patience_epochs 3
+
+### Early Stopping
+
+Training will automatically stop if validation performance does not improve
+for a specified number of epochs.
+
+Configuration:
+- Set `--patience_epochs` to control early stopping behavior
+
+### Evaluation Only
+
+Run evaluation using the best saved checkpoint on the validation or test set.
+
+Command:
+python train.py --evaluate_only --experiment_name my_experiment
+
+### Output Inspection
+
+After training completes, inspect the generated outputs:
+
+- Model checkpoints: `checkp
+
