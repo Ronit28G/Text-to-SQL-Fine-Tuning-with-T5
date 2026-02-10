@@ -1,32 +1,42 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/bV_AQ86u)
-# Text TO SQL
+# T5 Text-to-SQL Training Framework
 
-## Environment
+A PyTorch-based training framework for fine-tuning T5 models on text-to-SQL translation tasks.
 
-Virtual environment creation using conda:
-```
-conda create -n hw4-part-2-nlp python=3.10
-conda activate hw4-part-2-nlp
-python -m pip install -r requirements.txt
-```
+## Overview
 
-## Evaluation commands
+This project provides a complete pipeline for training T5 models to translate natural language queries into SQL statements. It supports both fine-tuning from pretrained checkpoints and training from scratch.
 
-If you have saved predicted SQL queries and associated database records, you can compute F1 scores using:
-```
-python evaluate.py
-  --predicted_sql results/t5_ft_dev.sql
-  --predicted_records records/t5_ft_dev.pkl
-  --development_sql data/dev.sql
-  --development_records records/ground_truth_dev.pkl
-```
+## Features
 
-## Testing
+- Flexible training options: fine-tune pretrained T5 or train from scratch
+- Multiple optimizers & schedulers: AdamW with cosine, linear, or no scheduling
+- Comprehensive evaluation metrics:
+  - SQL Exact Match
+  - Record Exact Match
+  - Record F1
+  - Error Rate
+- Early stopping with patience-based termination
+- Optional Weights & Biases (W&B) experiment tracking
+- Automatic checkpointing of best-performing models
 
-For SQL queries, ensure that the name of the submission files (in the `results/` subfolder) are:
-- `{t5_ft, ft_scr, gemma}_test.sql`
+## Requirements
 
-For database records, ensure that the name of the submission files (in the `records/` subfolder) are:
-- `{t5_ft, ft_scr, gemma}_test.pkl`
+- torch  
+- transformers  
+- numpy  
+- tqdm  
+- wandb  
+- nltk  
 
+## Data Format
 
+The framework expects the following directory structure:
+
+```text
+data/
+├── train.nl    # Natural language queries (one per line)
+├── train.sql   # Corresponding SQL queries (one per line)
+├── dev.nl      # Development set natural language
+├── dev.sql     # Development set SQL
+├── test.nl     # Test set natural language
+└── test.sql    # Test set SQL (for evaluation)
