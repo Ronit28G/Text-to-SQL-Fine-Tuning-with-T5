@@ -3,9 +3,7 @@
 
 ## Environment
 
-It's highly recommended to use a virtual environment (e.g. conda, venv) for this assignment.
-
-Example of virtual environment creation using conda:
+Virtual environment creation using conda:
 ```
 conda create -n hw4-part-2-nlp python=3.10
 conda activate hw4-part-2-nlp
@@ -23,9 +21,7 @@ python evaluate.py
   --development_records records/ground_truth_dev.pkl
 ```
 
-## Submission
-
-You need to submit your test SQL queries and their associated SQL records. Please only submit your final files corresponding to the test set.
+## Testing
 
 For SQL queries, ensure that the name of the submission files (in the `results/` subfolder) are:
 - `{t5_ft, ft_scr, gemma}_test.sql`
@@ -33,6 +29,4 @@ For SQL queries, ensure that the name of the submission files (in the `results/`
 For database records, ensure that the name of the submission files (in the `records/` subfolder) are:
 - `{t5_ft, ft_scr, gemma}_test.pkl`
 
-Note that the predictions in each line of the .sql file or in each index of the list within the .pkl file must match each natural language query in 'data/test.nl' in the order they appear.
 
-For the LLM, even if you experimented with both models, you should submit only one `.sql` file and one `.pkl` file, corresponding to the model of your choice. Do not submit separate result files for each model.
