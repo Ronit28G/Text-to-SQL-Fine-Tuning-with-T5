@@ -41,7 +41,7 @@ data/
 ├── test.nl     # Test set natural language
 └── test.sql    # Test set SQL (for evaluation)
 
-
+```
 ## Usage
 
 ### Basic Training
